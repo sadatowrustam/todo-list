@@ -1,45 +1,58 @@
 import React, { useState } from 'react';
 
 
-const LoginForm = ({login}) => {
+const Register = ({register}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email,setEmail]=useState("")
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setUsername("")
     setPassword("")
-    login({username, password})
+    setUsername("")
+    setEmail("")
+    register({username, password,email})
 
-    // TODO: Submit the login form to your backend API
+    // TODO: Submit the register form to your backend API
   };
 
   return (
     <div className="flex items-center justify-center h-screen bg-slate-700">
       <div className="w-full max-w-md">
-      <h1 className='text-xl text-white'>Login</h1>
-        <form action="/login" method="post">
+      <h1 className='text-xl text-white'>Register</h1>
+        <form>
           <div className="mt-4">
             <label htmlFor="username" className='text-white'>Username</label>
             <input
               type="text"
               name="username"
               id="username"
-              required
               className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 "
               value={username}
+              required
               onChange={(event) => setUsername(event.target.value)}
             />
           </div>
-
+          <div className="mt-4">
+            <label htmlFor="email" className='text-white'>Email</label>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              required
+              className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 "
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+          </div>  
           <div className="mt-4">
             <label htmlFor="password" className='text-white'>Password</label>
             <input
               type="password"
               name="password"
               id="password"
-              required
               className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-gray-700 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              required
               value={password}
               onChange={(event) => setPassword(event.target.value)}
             />
@@ -55,10 +68,9 @@ const LoginForm = ({login}) => {
             </button>
           </div>
         </form>
-        <p className='text-md text-white'>Not registered yet <a href='/registration' className='text-#50f100 hover:text-blue-500'>Register</a></p>
       </div>
     </div>
   );
 };
 
-export default LoginForm;
+export default Register;
